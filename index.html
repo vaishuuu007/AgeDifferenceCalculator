@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Date and time checker</title>
+    </head>
+
+<style>
+
+.main-division {
+    background-color: rgb(249, 157, 252);
+    width: 300px;
+    border-radius: 20px;
+    border: #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 30px auto;
+    padding: 50px;
+}
+.title {
+    text-align: center;
+
+}
+.btn{
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 20px;
+    display: block;
+    cursor: pointer;
+    margin: 10px auto;
+}
+.second-division{
+    text-align: center;
+}
+</style>
+<body>
+    <h1 class="title">Age Difference Calculator</h1>
+    <div class="main-division">
+        <label for="Birthdate">Enter Your Birthdate:</label>
+        <input type="date" id="Birthdate"><br/><br/><br/>
+        <label for="Birthdate">Enter Your Birthdate:</label>
+        <input type="date" id="Birthdate">
+    </div>
+    <div>
+
+        <button class="btn" onclick="CalculateAge()">Calculate Age</button>
+    </div>
+    <div  class="second-division" id="result"></div>
+
+
+    <script>
+        function CalculateAge(){
+            const BirthdateInput = document.getElementById('Birthdate').value;
+            const birthdate = new Date(BirthdateInput);
+            const now = new Date();
+
+            let age = now.getFullYear() - birthdate.getFullYear();
+            
+             const monthDiff = now.getMonth() - birthdate.getMonth();
+             console.log(monthDiff);
+
+        if(monthDiff < 0 || (monthDiff == 0 && now.getDate()< birthdate.getDate()))
+        {
+            age--;
+        }
+        document.getElementById('result').innerText = `Your Age is ${age}` ;
+        }
+    </script>
+</body>
+</html>
